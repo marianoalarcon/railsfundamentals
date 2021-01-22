@@ -1,1 +1,7 @@
 <h1> Hello from the other side </h1>
+
+<%= form_with url: "/", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
