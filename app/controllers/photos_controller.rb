@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new
   end
   def create
-    @photo = Photo.create(name: params[:photo][:name],code: params[:photo][:code])
+    @photo = current_admin.photos.create(name: params[:photo][:name],code: params[:photo][:code])
     redirect_to @photo
   end
   def show
@@ -25,6 +25,9 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
 
+  def from_author
+    @user_admin = Admin.find(params[:admin_id])
+  end
   def find_photo
     @photo = Photo.find(params[:id])
   end

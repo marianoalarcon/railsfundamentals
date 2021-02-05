@@ -2,5 +2,6 @@
     <p class="text-uppercase">Titulo: <%=article.title %> </p>
     <p>Status: <%=article.status %> </p>
     <p><%= article.created_at %></p>
+    <p >Publicado por: <%= article.admin.name %> </p>
     <%= link_to 'Ver mas', article %>
 </div>

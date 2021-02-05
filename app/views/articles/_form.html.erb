@@ -1,19 +1,21 @@
 <%= form_with(model: @article, local: true) do |form| %>
+	<div id="form-style">
 	<div>
 		<%= form.label :title %>
-		<p>	<%= form.text_field :title %> </p>
+		<%= form.text_field :title %> 
 	</div>
 	<div>
 		<%= form.label :status %>
-		<p> <%= form.text_field :status %> </p>
+		<%= form.text_field :status %> 
 	</div>
 
 	<div>
 		<%= form.label :content %>
-		<p>	<%= form.rich_text_area :content %> </p>
+		<%= form.rich_text_area :content %> 
 	</div>
 	
 	<div>
 		<%= form.submit %>
+	</div>
 	</div>
 <% end %>

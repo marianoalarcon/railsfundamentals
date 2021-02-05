@@ -1,6 +1,7 @@
 <div class="card">
-    <p><%= photo.name %></p>
-    <p><%= photo.code %></p>
-    <p><%= photo.created_at %></p>
+    <p>Nombre: <%= photo.name %></p>
+    <p>Codigo: <%= photo.code %></p>
+    <p>Creada: <%= photo.created_at %></p>
+    <p>Publicada por: <%= photo.admin.name %></p>
     <%= link_to 'Ver foto', photo %>
 </div>

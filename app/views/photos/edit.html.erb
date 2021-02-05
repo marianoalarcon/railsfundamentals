@@ -1,8 +1,1 @@
-<%=form_with(model: @photo, local: true ) do |f| %>
-    <%=  f.label :name %>
-    <p><%= f.text_field :name %> </p>
-    <%= f.label :code %>
-    <p> <%= f.text_field :code %> </p>
-
-    <%= f.submit %>
-<% end %>
+<%= render 'photos/form' %>
