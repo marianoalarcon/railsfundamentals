@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :find_photo, only: [:show,:edit,:update,:destroy]
+  before_action :authenticate_admin!, except: [:show, :index]
   def new
     @photo = Photo.new
   end

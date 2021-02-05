@@ -2,14 +2,31 @@
     <li class="nav-item">
         <%= link_to 'Inicio', root_path, class: "nav-link" %>
     </li>
-    <li>
+    <li class="nav-item">
         <%= link_to 'Fotos', photos_path, class:"nav-link" %>
     </li>
-    <li>
+    <li class="nav-item">
         <%= link_to 'Articulos', articles_path, class:"nav-link" %>
     </li>
-    <li>
+    <li class="nav-item">
         <%= link_to 'Nuevo Articulo', new_articles_path, class:"nav-link" %>
     </li>
+
+    <% if admin_signed_in? %>
+        <li class="nav-item">
+            <%= link_to 'Cerrar Sesion', destroy_admin_session_path, method: :delete, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to current_admin.name, root_path, class: "nav-link" %>       
+        </li>    
+    <% else %>
+        <li class="nav-item">
+            <%= link_to 'Iniciar Sesion', new_admin_session_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Registrarse', new_admin_registration_path, class:"nav-link" %>
+        </li>
+    <% end %>
+
 
 </nav>   

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :admins
 	# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 	
 	# Photos
@@ -14,6 +15,10 @@ Rails.application.routes.draw do
 	get 'photos', to: 'photos#index'
 	
 	# Articles
+
+	#Articulos de un usuario admin, relacion entre tablas
+	get 'articles/admin/:admin_id', to: 'articles#from_author'
+
 	get 'articles/new', to: 'articles#new', as: :new_articles
 	get 'articles/:id', to: 'articles#show'
 	get 'articles/:id/edit', to: 'articles#edit'
@@ -21,6 +26,8 @@ Rails.application.routes.draw do
 	patch 'articles/:id', to: 'articles#update', as: :article
 	delete 'articles/:id', to: 'articles#destroy'
 	get 'articles', to: 'articles#index'
+	
+
 	# get "/bienvenida", to: "home#index"
 	root 'home#index'
 end
