@@ -1,8 +1,9 @@
 <h1> <%= @article.title %> </h1>
 
-<%= @article.status %> 
+<p>Status: <%= @article.status %> </p>
+<p>Articulo perteneciente al usuario: <%= @article.admin.name%></p> 
 <div>
-	<%= @article.content %> 
+	<span>Contenido: <%= @article.content %></span> 
 </div>
 
 <div>
