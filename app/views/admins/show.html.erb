@@ -1,0 +1,9 @@
+<div>
+    <p class="text-uppercase">Usuario: <%=@admin.name %> </p>
+    <p>Status: <%=@admin.email %> </p>
+    <p><%= @admin.created_at %></p>
+
+    <h2>Articulos publicados: </h2>
+    <%= render @admin.articles %>
+
+</div>

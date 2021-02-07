@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 	# Users Admins
 
 	get 'admins', to: 'admins#index'
+	get 'admins/:id', to: 'admins#show', as: :admin
+
 
 	# Photos
 	#resources :photos
