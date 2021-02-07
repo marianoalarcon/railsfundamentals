@@ -7,8 +7,7 @@ class ArticlesController < ApplicationController
 		@article = Article.new
 	end
 	def create
-		@article = current_admin.articles.create(title: params[:article][:title],status: params[:article][:status],
-		content: params[:article][:content])
+		@article = current_admin.articles.create(strong_article_params)
 		redirect_to @article
 		#redirect_to articles_path
 		#render json: @article
@@ -18,9 +17,7 @@ class ArticlesController < ApplicationController
 	def edit
 	end
 	def update
-		@article.update(title: params[:article][:title],status: params[:article][:status],
-		content: params[:article][:content])
-		
+		@article.update(strong_article_params)		
 		redirect_to @article
 	end
 
@@ -39,5 +36,9 @@ class ArticlesController < ApplicationController
 
 	def find_article
 		@article = Article.find(params[:id])
+	end
+	# Strong params (Buenas Practicas) Refactor code and security params
+	def strong_article_params
+		params.require(:article).permit(:title,:status,:content)
 	end
 end

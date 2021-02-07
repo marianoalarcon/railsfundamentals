@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new
   end
   def create
-    @photo = current_admin.photos.create(name: params[:photo][:name],code: params[:photo][:code])
+    @photo = current_admin.photos.create(photo_params)
     redirect_to @photo
   end
   def show
@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
   def edit
   end
   def update
-    @photo = Photo.update(name: params[:photo][:name],code: params[:photo][:code])
+    @photo.update(photo_params)
     redirect_to @photo
   end
   def destroy
@@ -30,5 +30,9 @@ class PhotosController < ApplicationController
   end
   def find_photo
     @photo = Photo.find(params[:id])
+  end
+  #Buenas Practicas 
+  def photo_params
+    params.require(:photo).permit(:name,:code)
   end
 end
