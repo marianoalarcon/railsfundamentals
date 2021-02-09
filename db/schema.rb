@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_223314) do
+ActiveRecord::Schema.define(version: 2021_02_08_085803) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +72,23 @@ ActiveRecord::Schema.define(version: 2021_02_05_223314) do
     t.index ["admin_id"], name: "index_articles_on_admin_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "color"
+  end
+
+  create_table "has_categories", force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_has_categories_on_article_id"
+    t.index ["category_id"], name: "index_has_categories_on_category_id"
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string "name"
     t.integer "code"
@@ -84,5 +101,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_223314) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "admins"
+  add_foreign_key "has_categories", "articles"
+  add_foreign_key "has_categories", "categories"
   add_foreign_key "photos", "admins"
 end

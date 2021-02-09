@@ -5,9 +5,11 @@ class ArticlesController < ApplicationController
 	before_action :find_article, except: [:new, :create, :index, :from_author]
 	def new
 		@article = Article.new
+		@categories = Category.all
 	end
 	def create
 		@article = current_admin.articles.create(strong_article_params)
+		@article.save_categories
 		redirect_to @article
 		#redirect_to articles_path
 		#render json: @article
@@ -15,9 +17,12 @@ class ArticlesController < ApplicationController
 	def show
 	end
 	def edit
+		@categories = Category.all
 	end
 	def update
-		@article.update(strong_article_params)		
+		@article.update(strong_article_params)
+		@article.save_categories
+		
 		redirect_to @article
 	end
 
@@ -39,6 +44,6 @@ class ArticlesController < ApplicationController
 	end
 	# Strong params (Buenas Practicas) Refactor code and security params
 	def strong_article_params
-		params.require(:article).permit(:title,:status,:content)
+		params.require(:article).permit(:title,:status,:content,category_elements: [])
 	end
 end

@@ -1,11 +1,22 @@
-<h1> <%= @article.title %> </h1>
+<div class="contenido">
+	<h1> <%= @article.title %> </h1>
 
-<p>Status: <%= @article.status %> </p>
-<p>Articulo perteneciente al usuario: <%= @article.admin.name%></p> 
-<div>
-	<span>Contenido: <%= @article.content %></span> 
-</div>
+	<p>Status: <%= @article.status %> </p>
+	<p>Articulo perteneciente al usuario: <%= @article.admin.name%></p> 
+	<div class="contenido">
+		<span>Contenido: <%= @article.content %></span> 
+	</div>
 
-<div>
-	<%= link_to 'Eliminar Articulo', @article, method: :delete %>
+	<div>
+		<p>Tags</p>
+			<% @article.categories.each do |category| %>
+				<span class="badge badge-pill padding" style="background-color:<%= category.color %>">
+					<%= link_to category.name, category, class:"text-white" %>
+				</span>
+			<% end %>
+	</div>
+
+	<div>
+		<%= link_to 'Eliminar Articulo', @article, method: :delete %>
+	</div>
 </div>

@@ -2,6 +2,7 @@
 
 <h3>Codigo: <%= @photo.code %></h3>
 
-<%= link_to 'Eliminar', @photo, method: :delete %>
+<%= link_to 'Eliminar', @photo, method: :delete %> |
 
-<%= link_to 'Editar articulo', @photo %>
+<%= link_to 'Editar foto', edit_photo_path(@photo) %> |
+<%= link_to 'Atras', photos_path %>

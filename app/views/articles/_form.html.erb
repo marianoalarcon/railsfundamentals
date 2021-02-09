@@ -15,6 +15,20 @@
 	</div>
 	
 	<div>
+		<%= form.label :category_elements %>
+		<div class="row">
+
+			<% @categories.each do |category| %>
+				<label class="col-6 col-sm-2">		
+					<%= form.check_box :category_elements, {multiple: true}, category.id, nil %>
+					<%= category.name %>
+				</label>			
+			<% end %>
+		
+		</div> 
+	</div>
+
+	<div>
 		<%= form.submit %>
 	</div>
 	</div>
