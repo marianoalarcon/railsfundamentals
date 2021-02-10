@@ -27,7 +27,10 @@
         </li>
         <li class="nav-item">
             <%= link_to current_admin.name, root_path, class: "nav-link" %>       
-        </li>    
+        </li>
+        <% if current_admin.avatar.attached? %>
+		    <%= image_tag current_admin.avatar, height:80 %>	
+	    <% end %>    
     <% else %>
         <li class="nav-item">
             <%= link_to 'Iniciar Sesion', new_admin_session_path, class:"nav-link" %>

@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 	devise_for :admins
 	
 	# Users Admins
-	get 'admins', to: 'admins#index'
-	get 'admins/:id', to: 'admins#show', as: :admin
+	#get 'admins', to: 'admins#index'
+	#get 'admins/:id', to: 'admins#show', as: :admin
+	get 'perfil', to: 'admins#edit'
+	resources :admins, only: [:index,:show,:update]
 	# Articles	
 	#Articulos de un usuario admin, relacion entre tablas
 	# get 'articles/admin/:admin_id', to: 'articles#from_author'

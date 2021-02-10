@@ -5,4 +5,6 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :articles
   has_many :photos
+  
+  has_one_attached :avatar # Gracias a Active Storage
 end

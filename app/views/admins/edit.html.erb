@@ -1,0 +1,19 @@
+<div class="contenido">
+<%= form_with(model: current_admin, local: true) do |form| %>
+
+  <% if current_admin.avatar.attached? %>
+    <%= image_tag url_for(current_admin.avatar), height:640 %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+  
+  <div class="field">
+    <%= form.submit "Guardar", class:"btn btn-primary" %>
+  </div>
+
+<% end %>
+
+</div>
